@@ -16,7 +16,7 @@ const Contact = new Schema({
     optional: true,
   },
 
-  isFavorite: {
+  isFavourite: {
     type: Boolean,
     default: false,
   },
@@ -32,7 +32,7 @@ const Contact = new Schema({
   // updatedAt: {
   //   type: Date,
   //   default: Date.now,
-  // }, сделать как в конспекте 2 модуля + isFavorite менять на isFavourite где-то
+  // }, сделать как в конспекте 2 модуля
 });
 
 export const ContactsCollection = model('contacts', Contact);
