@@ -25,14 +25,14 @@ const Contact = new Schema({
     enum: ['work', 'personal', 'home'],
     default: 'personal',
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
+  // createdAt: {
+  //   type: Date,
+  //   default: Date.now,
+  // },
+  // updatedAt: {
+  //   type: Date,
+  //   default: Date.now,
+  // }, сделать как в конспекте 2 модуля + isFavorite менять на isFavourite где-то
 });
 
 export const ContactsCollection = model('contacts', Contact);
