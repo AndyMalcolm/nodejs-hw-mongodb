@@ -1,6 +1,6 @@
-import { model, Schema } from 'mongoose';
+import { Schema } from "mongoose";
 
-const Contact = new Schema({
+export const Contact = new Schema({
   name: {
     type: String,
     required: [true, 'Set name for contact'],
@@ -25,14 +25,9 @@ const Contact = new Schema({
     enum: ['work', 'personal', 'home'],
     default: 'personal',
   },
-  // createdAt: {
-  //   type: Date,
-  //   default: Date.now,
-  // },
-  // updatedAt: {
-  //   type: Date,
-  //   default: Date.now,
-  // }, сделать как в конспекте 2 модуля
-});
-
-export const ContactsCollection = model('contacts', Contact);
+},
+  {
+    timestamps: true,
+    versionKey: false,
+  }
+);
