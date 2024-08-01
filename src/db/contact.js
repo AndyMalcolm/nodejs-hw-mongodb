@@ -1,11 +1,11 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
-import { model } from 'mongoose';
-import { Contact } from './contact';
+// import { model } from 'mongoose';
+// import { Contact } from './contact';
 
-export const ContactsCollection = model('contacts', Contact);
+// export const ContactsCollection = model('contacts', Contact);
 
-export const Contacts = new Schema({
+export const Contact = new Schema({
   name: {
     type: String,
     required: [true, 'Set name for contact'],
@@ -36,3 +36,5 @@ export const Contacts = new Schema({
     versionKey: false,
   }
 );
+
+export const ContactsCollection = model('contacts', Contact);
