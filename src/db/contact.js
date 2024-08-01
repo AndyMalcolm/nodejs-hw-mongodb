@@ -1,6 +1,11 @@
 import { Schema } from "mongoose";
 
-export const Contact = new Schema({
+import { model } from 'mongoose';
+import { Contact } from './contact';
+
+export const ContactsCollection = model('contacts', Contact);
+
+export const Contacts = new Schema({
   name: {
     type: String,
     required: [true, 'Set name for contact'],
