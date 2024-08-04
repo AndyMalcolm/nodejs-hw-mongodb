@@ -4,7 +4,7 @@ import cors from 'cors';
 
 import { env } from './utils/env.js';
 
-import contactsRouter from './routers/contacts.js';
+import contactsRouter from './services/contacts.js';
 
 const PORT = Number(env('PORT', '3000'));
 
