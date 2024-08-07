@@ -4,9 +4,9 @@ import {
     getAllContacts,
     getContactById,
     upsertsContact,
-  } from '../servies/contacts.js';
+  } from '../servcies/contacts.js';
   import createHttpError from 'http-errors';
-  import { isValidContactId } from '../middleware/isValidContactId.js';
+  import { isValidContactId } from '../middlewares/isValidContactId.js';
   
   export const getContactsController = async (req, res) => {
     const contacts = await getAllContacts();
