@@ -23,7 +23,7 @@ export const setupServer = () => {
   );
 
 
-  app.use('/contacts', contactsRouter);
+  app.use(contactsRouter);
 
   app.use('*', (req, res) => {
     res.status(404).json({
