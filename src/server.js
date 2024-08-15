@@ -28,18 +28,18 @@ export const setupServer = () => {
 
   app.use(contactsRouter);
 
-  // app.use('*', (req, res) => {
-  //   res.status(404).json({
-  //     message: 'Not found',
-  //   });
-  // });
-
-  app.use((err, req, res) => {
-    res.status(err.status || 500).json({
-      status: err.status || 500,
-      message: err.message || 'Not found',
+  app.use('*', (req, res) => {
+    res.status(404).json({
+      message: 'Not found',
     });
   });
+
+  // app.use((err, req, res) => {
+  //   res.status(err.status || 500).json({
+  //     status: err.status || 500,
+  //     message: err.message || 'Not found',
+  //   });
+  // });
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
