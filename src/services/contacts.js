@@ -8,6 +8,23 @@ export const createContact = async (contactData) => {
   await newContact.save();
   return newContact;
 };
+
+export const deleteContactById = async (contactId) => {
+  return await Contact.findByIdAndDelete(contactId);
+};
+
+export const getContactById = async (contactId) => {
+  return await Contact.findById(contactId);
+};
+
+export const upsertsContact = async (contactId, contactData) => {
+  return await Contact.findByIdAndUpdate(
+    contactId,
+    { $set: contactData },
+    { new: true, upsert: true }
+  );
+};
+
 export const getAllContacts = async ({
   page = 1,
   perPage = 10,
