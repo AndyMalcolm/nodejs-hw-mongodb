@@ -1,7 +1,7 @@
 // тут тоже вроде норм, а вроде ошибка тут и в контакт сервисес
 import { Router } from 'express';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
-import { validateBody } from '../middleware/validateBody.js';
+import { validateBody } from '../middlewares/validateBody.js';
 import { createContactSchema } from '../validation/createContactSchema.js';
 import { updateContactSchema } from '../validation/updateContactSchema.js';
 
