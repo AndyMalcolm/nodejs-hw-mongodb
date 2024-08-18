@@ -1,5 +1,10 @@
+// тут тоже вроде норм, а вроде ошибка тут и в контакт сервисес
 import { Router } from 'express';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
+import { validateBody } from '../middleware/validateBody.js';
+import { createContactSchema } from '../validation/createContactSchema.js';
+import { updateContactSchema } from '../validation/updateContactSchema.js';
+
 import {
   createContactController,
   deleteContactByIdController,
@@ -18,14 +23,24 @@ contactsRouter.get(
   ctrlWrapper(getContactByIdController),
 );
 
-contactsRouter.post('/contacts', ctrlWrapper(createContactController));
+contactsRouter.post(
+  '/contacts',
+  validateBody(createContactSchema),
+  ctrlWrapper(createContactController),
+);
 
-contactsRouter.put('/contacts/:contactId', ctrlWrapper(putContactController));
+contactsRouter.put(
+  '/contacts/:contactId',
+  validateBody(createContactSchema),
+  ctrlWrapper(putContactController),
+);
 
 contactsRouter.patch(
   '/contacts/:contactId',
+  validateBody(updateContactSchema),
   ctrlWrapper(patchContactController),
 );
+
 
 contactsRouter.delete(
   '/contacts/:contactId',

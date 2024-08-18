@@ -1,7 +1,13 @@
+// тут вроде всё должно быть ок
 import { Contact } from '../db/models/contact.js';
 import { SORT_ORDER } from '../constants/constants.js';
 import { createPaginationData } from '../utils/createPaginationData.js';
 
+export const createContact = async (contactData) => {
+  const newContact = new Contact(contactData);
+  await newContact.save();
+  return newContact;
+};
 export const getAllContacts = async ({
   page = 1,
   perPage = 10,
