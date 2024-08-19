@@ -1,3 +1,17 @@
+// import createHttpError from 'http-errors';
+
+// export const validateBody = (schema) => async (req, res, next) => {
+//   try {
+//     await schema.validateAsync(req.body, { abortEarly: false, convert: false });
+//     next();
+//   } catch (err) {
+//     const error = createHttpError(400, 'Bad request', {
+//       errors: err.dateils,
+//     });
+//     next(error);
+//   }
+// }; старая
+
 import createHttpError from 'http-errors';
 
 export const validateBody = (schema) => async (req, res, next) => {
@@ -5,8 +19,9 @@ export const validateBody = (schema) => async (req, res, next) => {
     await schema.validateAsync(req.body, { abortEarly: false, convert: false });
     next();
   } catch (err) {
-    const error = createHttpError(400, 'Bad request', {
-      errors: err.dateils,
+    const errorMessages = err.details.map(detail => detail.message);
+    const error = createHttpError(400, 'Validation error', {
+      errors: errorMessages,  // новая
     });
     next(error);
   }
