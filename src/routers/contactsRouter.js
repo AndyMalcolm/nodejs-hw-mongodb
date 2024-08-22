@@ -8,13 +8,13 @@ import {
   patchContactController,
   putContactController,
 } from '../controllers/contacts.js';
-import { validateBody } from '../middleware/validateBody.js';
+import { validateBody } from '../middlewares/validateBody.js';
 import { createContactSchema } from '../validation/createContactSchema.js';
 import { updateContactSchema } from '../validation/updateContactSchema.js';
 import { ROLES } from '../constants/constants.js';
-import { checkRoles } from '../middleware/checkRoles.js';
-import { authenticate } from '../middleware/authenticate.js';
-import { isValidContactId } from '../middleware/isValidContactId.js';
+import { checkRoles } from '../middlewares/checkRoles.js';
+import { authenticate } from '../middlewares/authenticate.js';
+import { isValidContactId } from '../middlewares/isValidContactId.js';
 
 const contactsRouter = Router();
 

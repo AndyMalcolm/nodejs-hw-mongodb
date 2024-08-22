@@ -4,7 +4,7 @@ import {
   logoutUser,
   refreshUser,
   registerUser,
-} from '../servies/auth.js';
+} from '../services/auth.js';
 
 const setupSession = (res, session) => {
   res.cookie('sessionId', session._id, {
