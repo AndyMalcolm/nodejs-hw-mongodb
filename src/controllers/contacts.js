@@ -113,7 +113,7 @@ export const deleteContactByIdController = async (req, res) => {
 
 
 
-// тут подправить ошибку, когда будет. до routers все сделал, только тут ошибка
+// тут подправить ошибку, когда будет. до services все сделал, только тут ошибка. в роутерс странно что-то с файлами, может я не то создал
 // import {
 //   createContact,
 //   deleteContactById,
