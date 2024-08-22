@@ -113,7 +113,7 @@ export const deleteContactByIdController = async (req, res) => {
 
 
 
-// тут подправить ошибку, когда будет
+// тут подправить ошибку, когда будет. до routers все сделал, только тут ошибка
 // import {
 //   createContact,
 //   deleteContactById,
