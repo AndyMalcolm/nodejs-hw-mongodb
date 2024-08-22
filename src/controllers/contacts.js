@@ -112,7 +112,7 @@ export const deleteContactByIdController = async (req, res) => {
 
 
 
-
+// почему деплой фейлд?
 // тут подправить ошибку, когда вставляешь нижний код. в роутерс странно что-то с файлами, может я не то создал
 // import {
 //   createContact,
