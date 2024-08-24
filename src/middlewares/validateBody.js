@@ -13,3 +13,4 @@ export const validateBody = (schema) => async (req, res, next) => {
     next(error);
   }
 };
+// не менять в 6 и 7 дз
