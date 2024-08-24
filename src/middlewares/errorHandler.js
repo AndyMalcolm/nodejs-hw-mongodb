@@ -16,3 +16,4 @@ export const errorHandler = (err, req, res, next) => {
     data: err.message,
   });
 };
+// не менять в 6 и 7 дз
