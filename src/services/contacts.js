@@ -54,6 +54,8 @@ export const createContact = (payload, userId) => {
 };
 
 export const upsertsContact = async (_id, userId, payload, options = {}) => {
+  console.log('Received _id:', _id);
+  console.log('Received userId:', userId);
   const result = await Contact.findOneAndUpdate({ _id: (_id), userId: (userId) }, payload, {
     new: true,
     includesResultMetadata: true,
