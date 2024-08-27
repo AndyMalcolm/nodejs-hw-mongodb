@@ -16,7 +16,7 @@ export const getAllContacts = async ({
   const limit = perPage;
   const skip = (page - 1) * perPage;
 
-  const contactQuery = Contact.find({ userId: ObjectId(userId) });
+  const contactQuery = Contact.find({ userId: new ObjectId(userId) });
 
   if (filter.contactType) {
     contactQuery.where('contactType').equals(filter.contactType);
@@ -44,17 +44,17 @@ export const getAllContacts = async ({
 };
 
 export const getContactById = (_id, userId) => {
-  const contact = Contact.findOne({ _id: ObjectId(_id), userId: ObjectId(userId) });
+  const contact = Contact.findOne({ _id: new ObjectId(_id), userId: new ObjectId(userId) });
   return contact;
 };
 
 export const createContact = (payload, userId) => {
-  const contact = Contact.create({ ...payload, userId: ObjectId(userId) });
+  const contact = Contact.create({ ...payload, userId: new ObjectId(userId) });
   return contact;
 };
 
 export const upsertsContact = async (_id, userId, payload, options = {}) => {
-  const result = await Contact.findOneAndUpdate({ _id: ObjectId(_id), userId: ObjectId(userId) }, payload, {
+  const result = await Contact.findOneAndUpdate({ _id: new ObjectId(_id), userId: new ObjectId(userId) }, payload, {
     new: true,
     includesResultMetadata: true,
     ...options,
@@ -67,6 +67,6 @@ export const upsertsContact = async (_id, userId, payload, options = {}) => {
 };
 
 export const deleteContactById = async (contactId, userId) => {
-  const result = await Contact.findOneAndDelete({ _id: ObjectId(contactId), userId: ObjectId(userId) });
+  const result = await Contact.findOneAndDelete({ _id: new ObjectId(contactId), userId: new ObjectId(userId) });
   return result;
 };
