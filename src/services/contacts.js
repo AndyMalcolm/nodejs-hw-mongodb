@@ -76,7 +76,7 @@
 
 
 // MAYBE THIS IS GOOD
-import { SORT_ORDER } from '../constants/constants.js';
+import { SORT_ORDER } from '../constants/constants.js'; // в первом видео 1:30 про токены
 import { Contact } from '../db/models/contact.js';
 import { createPaginationData } from '../utils/createPaginationData.js';
 
