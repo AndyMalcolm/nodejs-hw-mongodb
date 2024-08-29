@@ -224,7 +224,7 @@ export async function getAllContacts({
 }
 
 export function getContactById(contactId, userId) {
-    return Contact.findById({_id: contactId, userId });
+    return Contact.findOne({_id: contactId, userId });
 }
 
 export function createContact(payload) {
