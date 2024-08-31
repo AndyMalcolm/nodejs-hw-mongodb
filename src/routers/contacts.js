@@ -11,7 +11,7 @@ import {
   getContactByIdController,
   getContactsController,
   patchContactController,
-  putContactController,
+  // putContactController,
 } from '../controllers/contacts.js';
 
 const contactsRouter = Router();
@@ -32,7 +32,7 @@ contactsRouter.post(
 contactsRouter.put(
   '/contacts/:contactId',
   validateBody(createContactSchema),
-  ctrlWrapper(putContactController),
+  // ctrlWrapper(putContactController),
 );
 
 contactsRouter.patch(
