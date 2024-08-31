@@ -6,7 +6,7 @@ import {
   getContactByIdController,
   getContactsController,
   patchContactController,
-  putContactController,
+  // putContactController,
 } from '../controllers/contacts.js';
 import { validateBody } from '../middlewares/validateBody.js';
 import { createContactSchema } from '../validation/createContactSchema.js';
@@ -39,7 +39,7 @@ contactsRouter.post(
 contactsRouter.put(
   '/:contactId',
   validateBody(createContactSchema),
-  ctrlWrapper(putContactController),
+  // ctrlWrapper(putContactController),
 );
 
 contactsRouter.patch(
