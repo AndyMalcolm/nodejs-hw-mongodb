@@ -58,10 +58,8 @@ import {
     patchContactController,
     deleteContactController
 } from "../controllers/contacts.js";
-import {
-    createContactSchema,
-    updateContactSchema
-} from "../db/validation/contact.js";
+import { createContactSchema } from '../validation/createContactSchema.js';
+import { updateContactSchema } from '../validation/updateContactSchema.js';
 import { validateBody } from "../middlewares/validateBody.js";
 import { ctrlWrapper } from "../utils/ctrlWrapper.js";
 import { authenticate } from "../middlewares/authenticate.js";
