@@ -64,8 +64,8 @@ import {
 } from "../db/validation/contact.js";
 import { validateBody } from "../middlewares/validateBody.js";
 import { ctrlWrapper } from "../utils/ctrlWrapper.js";
-import { isValidId } from "../middlewares/isValidId.js";
 import { authenticate } from "../middlewares/authenticate.js";
+import { isValidContactId } from "../middlewares/isValidContactId.js";
 
 
 
@@ -77,12 +77,12 @@ router.use(authenticate);
 
 router.get("/", ctrlWrapper(getContactsController));
 
-router.get("/:contactId", isValidId("contactId"), ctrlWrapper(getContactByIdController));
+router.get("/:contactId", isValidContactId("contactId"), ctrlWrapper(getContactByIdController));
 
 router.post("/", jsonParser, validateBody(createContactSchema), ctrlWrapper(createContactController));
 
-router.patch("/:contactId", isValidId("contactId"), jsonParser, validateBody(updateContactSchema), ctrlWrapper(patchContactController));
+router.patch("/:contactId", isValidContactId("contactId"), jsonParser, validateBody(updateContactSchema), ctrlWrapper(patchContactController));
 
-router.delete("/:contactId", isValidId("contactId"), ctrlWrapper(deleteContactController));
+router.delete("/:contactId", isValidContactId("contactId"), ctrlWrapper(deleteContactController));
 
 export default router;
