@@ -56,7 +56,7 @@ import {
     getContactByIdController,
     createContactController,
     patchContactController,
-    deleteContactController
+    deleteContactByIdController
 } from "../controllers/contacts.js";
 import { createContactSchema } from '../validation/createContactSchema.js';
 import { updateContactSchema } from '../validation/updateContactSchema.js';
@@ -75,12 +75,12 @@ router.use(authenticate);
 
 router.get("/", ctrlWrapper(getContactsController));
 
-router.get("/:contactId", isValidContactId("contactId"), ctrlWrapper(getContactByIdController));
+router.get("/:contactId", isValidContactId, ctrlWrapper(getContactByIdController));
 
 router.post("/", jsonParser, validateBody(createContactSchema), ctrlWrapper(createContactController));
 
-router.patch("/:contactId", isValidContactId("contactId"), jsonParser, validateBody(updateContactSchema), ctrlWrapper(patchContactController));
+router.patch("/:contactId", isValidContactId, jsonParser, validateBody(updateContactSchema), ctrlWrapper(patchContactController));
 
-router.delete("/:contactId", isValidContactId("contactId"), ctrlWrapper(deleteContactController));
+router.delete("/:contactId", isValidContactId, ctrlWrapper(deleteContactByIdController));
 
 export default router;
