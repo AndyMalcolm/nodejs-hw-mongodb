@@ -105,7 +105,7 @@ import {
     createContact,
     getAllContacts,
     getContactById,
-    upsertsContact,
+    deleteContactById,
     updateContact
 } from "../services/contacts.js";
 import { parsePaginationParams } from "../utils/parsePaginationParams.js";
@@ -188,7 +188,7 @@ export const deleteContactByIdController = async (req, res) => {
     const { contactId } = req.params;
     const userId = req.user._id;
 
-    const contact = await upsertsContact(contactId, userId);
+    const contact = await deleteContactById(contactId, userId);
 
     if (!contact) {
         throw (createHttpError(404, "Contact not found!"));
