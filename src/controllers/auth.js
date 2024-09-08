@@ -4,6 +4,8 @@ import {
   logoutUser,
   refreshUser,
   registerUser,
+  requestResetToken,
+  resetPassword,
 } from '../services/auth.js';
 
 const setupSession = (res, session) => {
@@ -67,3 +69,38 @@ export const logoutUserController = async (req, res) => {
 
   res.status(204).send();
 };
+
+export const requestResetEmailController = async (req, res) => {
+  await requestResetToken(req.body.email);
+
+  res.status(200).json({
+    status: 200,
+    message: 'Reset password email has been successfully sent.',
+    data: {},
+  });
+};
+
+export const resetPasswordController = async (req, res) => {
+  await resetPassword(req.body);
+
+  if (req.cookies.sessionId)
+    await logoutUser({
+      sessionId: req.cookies.sessionId,
+      refreshToken: req.cookies.refreshToken,
+    });
+
+  res.clearCookie('sessionId');
+  res.clearCookie('refreshToken');
+
+  res.json({
+    status: 200,
+    message: 'Password has been successfully reset.',
+    data: {},
+  });
+};
+
+// попробую взять всё с основы дз, главное проследить чтоб я код в некоторых файлах брал с другой дз или не менял вообще
+// не менять ерорхендлер и валидейтбоди в мидлвейрс. а код с другой дз глянуть в слаке, что я из последнего менял
+// если не, то всё беру с другой дз, даже названия файлов
+// ПОКА ЧТО ВАРИАНТ ПОМЕНЯТЬ ВСЁ С НОВОЙ ДЗ, НО СТРУКТУРУ ФАЙЛОВ И ПЕРЕМЕННЫЕ ВЗЯТЬ СТАРЫЕ. А НАЗВАНИЯ ФАЙЛОВ УЖЕ КАК БУДУТ
+// до мидлвейрс включительно всё сделал?
