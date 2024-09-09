@@ -5,7 +5,7 @@ import { Session } from '../db/models/session.js';
 import {
   ACCESS_TOKEN_LIFE_TIME,
   REFRESH_TOKEN_LIFE_TIME,
-} from '../constants/constants.js';
+} from '../constants/index.js';
 import { randomBytes } from 'crypto';
 
 const createSession = () => {
