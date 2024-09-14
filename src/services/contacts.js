@@ -65,7 +65,7 @@
 //     });
 // };
 // // не менять пока
-import { ContactsCollection } from "../db/models/contacts.js";
+import { ContactsCollection } from "../db/models/contact.js";
 import { calculatePaginationData } from "../utils/calculatePaginationData.js";
 import { SORT_ORDER } from "../constants/index.js";
 
@@ -131,3 +131,5 @@ export const deleteContact = (contactId, userId) => {
         userId,
     });
 };
+// вроде через нпм и все установил
+// исправить эту ошибку и где взять в клодинари api enivprment variable? у меня такого нет. скачать ещё с другой ссылки тг дз и глянуть в нем файлы енв

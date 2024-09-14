@@ -97,7 +97,7 @@ import {
 import {
     createContactSchema,
     updateContactSchema
-} from "../db/validation/contact.js";
+} from "../db/validation/contacts.js";
 import { validateBody } from "../middlewares/validateBody.js";
 import { ctrlWrapper } from "../utils/ctrlWrapper.js";
 import { isValidId } from "../middlewares/isValidId.js";
