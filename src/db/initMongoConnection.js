@@ -15,4 +15,3 @@ export const initMongoConnection = async () => {
         throw error;
     }
 };
-// до мидлвейрс все есть

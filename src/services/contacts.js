@@ -1,71 +1,4 @@
-// import { Contact } from '../db/models/contact.js';
-// import { createPaginationData } from "../utils/createPaginationData.js";
-// import { SORT_ORDER } from "../constants/constants.js";
-
-
-// export const getAllContacts = async ({
-//     page = 1,
-//     perPage = 10,
-//     sortOrder = SORT_ORDER.ASC,
-//     sortBy = "_id",
-//     filter = {},
-//     userId,
-// }) => {
-//     const limit = perPage;
-//     const skip = page > 0 ? (page - 1) * perPage : 0;
-
-//     const contactsQuery = Contact.find();
-
-//     if (typeof filter.type !== "undefined") {
-//         contactsQuery.where("contactType").equals(filter.type);
-//     }
-//     if (typeof filter.isFavorite !== "undefined") {
-//         contactsQuery.where("isFavorite").equals(filter.isFavorite);
-//     }
-
-//     contactsQuery.where("userId").equals(userId);
-
-//     const [contactsCount, contacts] = await Promise.all([
-//         Contact.find()
-//             .merge(contactsQuery)
-//             .countDocuments(),
-//         contactsQuery
-//             .skip(skip)
-//             .limit(limit)
-//             .sort({ [sortBy]: sortOrder })
-//             .exec(),
-//     ]);
-
-
-//     const paginationData = createPaginationData(contactsCount, perPage, page);
-//     return {
-//         data: contacts,
-//         ...paginationData,
-//     };
-
-// };
-
-// export const getContactById = (contactId, userId) => Contact.findOne({ _id: contactId, userId });
-
-// export const createContact = (payload) => {
-//     return Contact.create(payload);
-// };
-
-// export const updateContact = (contactId, payload, userId) => {
-//     return Contact.findOneAndUpdate(
-//         { _id: contactId, userId },
-//         payload,
-//         { new: true }); 
-// };
-
-// export const deleteContactById = (contactId, userId) => {
-//     return Contact.findOneAndDelete({
-//         _id: contactId,
-//         userId,
-//     });
-// };
-// // не менять пока
-import { ContactsCollection } from "../db/models/contact.js";
+// import { ContactsCollection } from "../db/models/contacts.js";
 import { calculatePaginationData } from "../utils/calculatePaginationData.js";
 import { SORT_ORDER } from "../constants/index.js";
 
@@ -78,29 +11,29 @@ export const getAllContacts = async ({
     filter = {},
     userId,
 }) => {
-    const limit = perPage;
-    const skip = page > 0 ? (page - 1) * perPage : 0;
+    // const limit = perPage;
+    // const skip = page > 0 ? (page - 1) * perPage : 0;
 
-    const contactsQuery = ContactsCollection.find();
+    // const contactsQuery = ContactsCollection.find();
 
-    if (typeof filter.type !== "undefined") {
-        contactsQuery.where("contactType").equals(filter.type);
-    }
-    if (typeof filter.isFavorite !== "undefined") {
-        contactsQuery.where("isFavorite").equals(filter.isFavorite);
-    }
+    // if (typeof filter.type !== "undefined") {
+    //     contactsQuery.where("contactType").equals(filter.type);
+    // }
+    // if (typeof filter.isFavorite !== "undefined") {
+    //     contactsQuery.where("isFavorite").equals(filter.isFavorite);
+    // }
 
-    contactsQuery.where("userId").equals(userId);
+    // contactsQuery.where("userId").equals(userId);
 
     const [contactsCount, contacts] = await Promise.all([
-        ContactsCollection.find()
-            .merge(contactsQuery)
-            .countDocuments(),
-        contactsQuery
-            .skip(skip)
-            .limit(limit)
-            .sort({ [sortBy]: sortOrder })
-            .exec(),
+        // ContactsCollection.find()
+        //     .merge(contactsQuery)
+            // .countDocuments(),
+        // contactsQuery
+            // .skip(skip)
+            // .limit(limit)
+            // .sort({ [sortBy]: sortOrder })
+            // .exec(),
     ]);
 
 
@@ -112,26 +45,24 @@ export const getAllContacts = async ({
 
 };
 
-export const getContactsById = (contactId, userId) => ContactsCollection.findOne({ _id: contactId, userId });
+// export const getContactsById = (contactId, userId) => ContactsCollection.findOne({ _id: contactId, userId });
 
 export const createContact = (payload) => {
-    return ContactsCollection.create(payload);
+    // return ContactsCollection.create(payload);
 };
 
 export const updateContact = (contactId, userId, payload) => {
-    return ContactsCollection.findOneAndUpdate(
-        { _id: contactId, userId },
-        payload,
-        { new: true }); // чи буде повернуто оновлений документ //
+    // return ContactsCollection.findOneAndUpdate(
+    //     { _id: contactId, userId },
+    //     payload,
+    //     { new: true });
 };
 
 export const deleteContact = (contactId, userId) => {
-    return ContactsCollection.findOneAndDelete({
-        _id: contactId,
-        userId,
-    });
+    // return ContactsCollection.findOneAndDelete({
+    //     _id: contactId,
+    //     userId,
+    // });
 };
-// вроде через нпм и все установил
-// исправить эту ошибку и где взять в клодинари api enivprment variable? у меня такого нет. скачать ещё с другой ссылки тг дз и глянуть в нем файлы енв
-
-// вроде все есть, осталось ошибки кода поправить и сдать
+// удалю контакты c db/models и потом их добавлю
+// жесткие комментарии тут и в контактах контроллера
