@@ -3,7 +3,7 @@ import {
     createContact,
     deleteContact,
     getAllContacts,
-    // getContactsById,
+    getContactsById,
     updateContact,
 } from "../services/contacts.js";
 import { parsePaginationParams } from "../utils/parsePaginationParams.js";
@@ -38,20 +38,20 @@ export const getContactsController = async (req, res) => {
 
 export const getContactByIdController = async (req, res) => {
 
-    // const { contactId } = req.params;
-    // const userId = req.user._id;
+    const { contactId } = req.params;
+    const userId = req.user._id;
 
-    // const contact = await getContactsById(contactId, userId);
+    const contact = await getContactsById(contactId, userId);
 
-    // if (!contact) {
-    //     throw (createHttpError(404, "Contact not found"));
-    // }
+    if (!contact) {
+        throw (createHttpError(404, "Contact not found"));
+    }
 
-    // res.json({
-    //     status: 200,
-    //     message: `Successfully found contact with id ${contactId}`,
-    //     data: contact,
-    // });
+    res.json({
+        status: 200,
+        message: `Successfully found contact with id ${contactId}`,
+        data: contact,
+    });
 };
 
 export const createContactController = async (req, res) => {

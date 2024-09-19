@@ -1,4 +1,4 @@
-// import { ContactsCollection } from "../db/models/contacts.js";
+import { ContactsCollection } from "../db/models/contacts.js";
 import { calculatePaginationData } from "../utils/calculatePaginationData.js";
 import { SORT_ORDER } from "../constants/index.js";
 
@@ -11,29 +11,29 @@ export const getAllContacts = async ({
     filter = {},
     userId,
 }) => {
-    // const limit = perPage;
-    // const skip = page > 0 ? (page - 1) * perPage : 0;
+    const limit = perPage;
+    const skip = page > 0 ? (page - 1) * perPage : 0;
 
-    // const contactsQuery = ContactsCollection.find();
+    const contactsQuery = ContactsCollection.find();
 
-    // if (typeof filter.type !== "undefined") {
-    //     contactsQuery.where("contactType").equals(filter.type);
-    // }
-    // if (typeof filter.isFavorite !== "undefined") {
-    //     contactsQuery.where("isFavorite").equals(filter.isFavorite);
-    // }
+    if (typeof filter.type !== "undefined") {
+        contactsQuery.where("contactType").equals(filter.type);
+    }
+    if (typeof filter.isFavorite !== "undefined") {
+        contactsQuery.where("isFavorite").equals(filter.isFavorite);
+    }
 
-    // contactsQuery.where("userId").equals(userId);
+    contactsQuery.where("userId").equals(userId);
 
     const [contactsCount, contacts] = await Promise.all([
-        // ContactsCollection.find()
-        //     .merge(contactsQuery)
-            // .countDocuments(),
-        // contactsQuery
-            // .skip(skip)
-            // .limit(limit)
-            // .sort({ [sortBy]: sortOrder })
-            // .exec(),
+        ContactsCollection.find()
+            .merge(contactsQuery)
+            .countDocuments(),
+        contactsQuery
+            .skip(skip)
+            .limit(limit)
+            .sort({ [sortBy]: sortOrder })
+            .exec(),
     ]);
 
 
@@ -45,24 +45,24 @@ export const getAllContacts = async ({
 
 };
 
-// export const getContactsById = (contactId, userId) => ContactsCollection.findOne({ _id: contactId, userId });
+export const getContactsById = (contactId, userId) => ContactsCollection.findOne({ _id: contactId, userId });
 
 export const createContact = (payload) => {
-    // return ContactsCollection.create(payload);
+    return ContactsCollection.create(payload);
 };
 
 export const updateContact = (contactId, userId, payload) => {
-    // return ContactsCollection.findOneAndUpdate(
-    //     { _id: contactId, userId },
-    //     payload,
-    //     { new: true });
+    return ContactsCollection.findOneAndUpdate(
+        { _id: contactId, userId },
+        payload,
+        { new: true });
 };
 
 export const deleteContact = (contactId, userId) => {
-    // return ContactsCollection.findOneAndDelete({
-    //     _id: contactId,
-    //     userId,
-    // });
+    return ContactsCollection.findOneAndDelete({
+        _id: contactId,
+        userId,
+    });
 };
 // удалю контакты c db/models и потом их добавлю
 // жесткие комментарии тут и в контактах контроллера
