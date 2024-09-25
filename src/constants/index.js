@@ -34,6 +34,9 @@ export const CLOUDINARY = {
     API_SECRET: "API_SECRET",
     ENABLE_CLOUDINARY: "ENABLE_CLOUDINARY",
 };
+
+export const SWAGGER_PATH = path.join(process.cwd(), "docs", "swagger.json");
+
 // читаю конспект и сначала нпм инсталл всё делаю, потом на сайтах регаюсь и добавляю значения в енв и рендер, если надо
 // а потом уже код перекидываю
-// опенаи ямл и сваггер джсон удалить вместе с новыми изменениями
+// константы есть
