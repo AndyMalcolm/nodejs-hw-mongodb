@@ -1,6 +1,6 @@
-import { ContactsCollection } from "../db/models/contacts.js";
 import { calculatePaginationData } from "../utils/calculatePaginationData.js";
 import { SORT_ORDER } from "../constants/index.js";
+import { ContactsCollection } from "../db/models/contacts.js";
 
 
 export const getAllContacts = async ({
@@ -47,8 +47,9 @@ export const getAllContacts = async ({
 
 export const getContactsById = (contactId, userId) => ContactsCollection.findOne({ _id: contactId, userId });
 
-export const createContact = (payload) => {
-    return ContactsCollection.create(payload);
+export const createContact = async (payload) => {
+    const contact = await ContactsCollection.create(payload);
+    return contact;
 };
 
 export const updateContact = (contactId, userId, payload) => {
@@ -64,6 +65,3 @@ export const deleteContact = (contactId, userId) => {
         userId,
     });
 };
-// теперь я удаляю комиты, где добавлял код в env.example, надо запомнить, какие изменения в тех комитах были, может скрины сделать
-// ну а потом заново вернуть везде изменения, а в env.example оставить пустые поля, тогда уже пуш должен сработать
-// попробовать найти и удалить сохранение, где я файл константы менял на индекс
