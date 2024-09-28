@@ -48,7 +48,8 @@ export const SWAGGER_PATH = path.join(process.cwd(), "docs", "swagger.json");
 // "preview-docs": "redocly preview-docs",
 // } вот это в пакедж.джсон добавил уже
 
-// redocly.yaml где создать?
 // папку uploads удалил, но она опять появляется, это почему? папка темп нужна? 
 
 // swagger добавил, правильный? если не, то заново все создам
+
+// redocly тоже создал
