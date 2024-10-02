@@ -36,20 +36,3 @@ export const CLOUDINARY = {
 };
 
 export const SWAGGER_PATH = path.join(process.cwd(), "docs", "swagger.json");
-
-// вроде все нпм установил и на сайтах зарегался(проверить)
-
-// осталось понять, где файлы в папку сваггер скачать, а так код есть и всё в докс тоже есть
-// ещё почитать конспект по сваггеру и всё сделать, а если не, то у ментора спросить, что с папкой, чем заполнять
-
-// "scripts": {
-//     "build": "npm run build-docs",
-// "build-docs": "redocly bundle --ext json -o docs/swagger.json",
-// "preview-docs": "redocly preview-docs",
-// } вот это в пакедж.джсон добавил уже
-
-// папку uploads удалил, но она опять появляется, это почему? папка темп нужна? 
-
-// swagger добавил, правильный? если не, то заново все создам
-
-// redocly тоже создал
